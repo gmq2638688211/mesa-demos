@@ -44,48 +44,49 @@
 
 static void display(void)
 {
-/* clear all pixels  */
-   glClear (GL_COLOR_BUFFER_BIT);
+	/* clear all pixels  */
+	glClear(GL_COLOR_BUFFER_BIT);
 
-/* draw white polygon (rectangle) with corners at
- * (0.25, 0.25, 0.0) and (0.75, 0.75, 0.0)
- */
-   glColor3f (1.0, 1.0, 1.0);
-   glBegin(GL_POLYGON);
-      glVertex3f (0.25, 0.25, 0.0);
-      glVertex3f (0.75, 0.25, 0.0);
-      glVertex3f (0.75, 0.75, 0.0);
-      glVertex3f (0.25, 0.75, 0.0);
-   glEnd();
+	/* draw white polygon (rectangle) with corners at
+	* (0.25, 0.25, 0.0) and (0.75, 0.75, 0.0)
+	*/
+	glColor3f(1.0, 1.0, 1.0);
+	glBegin(GL_POLYGON);
+	glVertex3f(0.25, 0.25, 0.0);
+	glVertex3f(0.75, 0.25, 0.0);
+	glVertex3f(0.75, 0.75, 0.0);
+	glVertex3f(0.25, 0.75, 0.0);
+	glEnd();
 
-/* don't wait!
- * start processing buffered OpenGL routines
- */
-   glFlush ();
+	/* don't wait!
+	* start processing buffered OpenGL routines
+	*/
+	glFlush();
 }
 
-static void init (void)
+static void init(void)
 {
-/* select clearing color 	*/
-   glClearColor (0.0, 0.0, 0.0, 0.0);
+	/* select clearing color */
+	glClearColor(0.0, 0.0, 0.0, 0.0);
 
-/* initialize viewing values  */
-   glMatrixMode(GL_PROJECTION);
-   glLoadIdentity();
-   glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+	/* initialize viewing values */
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 }
 
 static void
 key(unsigned char k, int x, int y)
 {
-  switch (k) {
-  case 27:  /* Escape */
-    exit(0);
-    break;
-  default:
-    return;
-  }
-  glutPostRedisplay();
+	switch (k)
+	{
+	case 27: /* Escape */
+		exit(0);
+		break;
+	default:
+		return;
+	}
+	glutPostRedisplay();
 }
 
 /*
@@ -95,16 +96,16 @@ key(unsigned char k, int x, int y)
  * Register callback function to display graphics.
  * Enter main loop and process events.
  */
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
-   glutInit(&argc, argv);
-   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-   glutInitWindowSize (250, 250);
-   glutInitWindowPosition (100, 100);
-   glutCreateWindow ("hello");
-   init ();
-   glutDisplayFunc(display);
-   glutKeyboardFunc(key);
-   glutMainLoop();
-   return 0;   /* ANSI C requires main to return int. */
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowSize(250, 250);
+	glutInitWindowPosition(100, 100);
+	glutCreateWindow("hello");
+	init();
+	glutDisplayFunc(display);
+	glutKeyboardFunc(key);
+	glutMainLoop();
+	return 0; /* ANSI C requires main to return int. */
 }
